@@ -21,10 +21,13 @@ var kernel = builder.Build();
 var chatCompletionService = kernel.GetRequiredService<IChatCompletionService>();
 
 // Add the plugin to the kernel
-
+kernel.Plugins.AddFromType<FlightBookingPlugin>("FlightBookingPlugin");
 
 // Configure function choice behavior
-
+OpenAIPromptExecutionSettings openAIPromptExecutionSettings = new() 
+{
+    FunctionChoiceBehavior = FunctionChoiceBehavior.Auto()
+};
 
 var history = new ChatHistory();
 history.AddSystemMessage("The year is 2025 and the current month is January");
