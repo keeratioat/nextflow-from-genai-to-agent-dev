@@ -14,12 +14,12 @@ var configuration = new ConfigurationBuilder()
     .AddJsonFile("appsettings.json")
     .Build();
 
-var azureOpenAIEndpoint = configuration["AZURE_OPENAI_ENDPOINT"];
+var azureOpenAIEndpoint = configuration["PROJECT_ENDPOINT"];
 var modelDeployment = configuration["MODEL_DEPLOYMENT_NAME"];
 
 if (string.IsNullOrEmpty(azureOpenAIEndpoint) || string.IsNullOrEmpty(modelDeployment))
 {
-    Console.WriteLine("Please set AZURE_OPENAI_ENDPOINT and MODEL_DEPLOYMENT_NAME in appsettings.json");
+    Console.WriteLine("Please set PROJECT_ENDPOINT and MODEL_DEPLOYMENT_NAME in appsettings.json");
     return;
 }
 
